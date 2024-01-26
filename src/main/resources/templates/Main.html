@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru" style="background: #0f5132; height: 100%;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Главная страница</title>
+</head>
+<body class="bodys">
+<div class="container-fluid" style="background: #2f3130">
+    <nav class="navbar navbar-light snav">
+        <div class="container-fluid snav">
+            <a class="navbar-brand" href="#">
+                <img th:src="@{/img/teacher-desk.png}" alt="" width="80" height="80"/>
+            </a>
+            <h2 class="whitetext">Преподавательский состав</h2>
+        </div>
+    </nav>
+    <div class="container" style="background: #607683; flex: 1 0 auto">
+        <br><br><br>
+        <div class="list-group text-center py-3 px-3">
+            <h2>Разделы</h2>
+            <a class="list-group-item list-group-itemprimary item hrefitem" href="/faculty">Факультеты</a>
+            <a class="list-group-item list-group-iteminfo item hrefitem"  href="/chair">Кафедры</a>
+            <a class="list-group-item list-group-iteminfo item hrefitem"  href="/teacher">Преподаватели</a>
+            <a class="list-group-item list-group-iteminfo item hrefitem"  href="/post">Должности</a>
+        </div>
+        <br><br>
+    </div>
+</div>
+</body>
+</html>
