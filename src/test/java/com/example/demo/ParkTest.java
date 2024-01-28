@@ -14,12 +14,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ChairTest {
+public class ParkTest {
     @Autowired
     private MockMvc mock;
     @Test
     public void func() throws Exception{
-        mock.perform(MockMvcRequestBuilders.get("/chair").accept(MediaType.APPLICATION_JSON)).
-                andExpect(status().isOk()).andExpect(content().string(equalTo("Кафедры")));
+        mock.perform(MockMvcRequestBuilders.get("/park").accept(MediaType.APPLICATION_JSON)).
+                andExpect(status().isOk()).andExpect(content().string(equalTo("Парки")));
     }
 }

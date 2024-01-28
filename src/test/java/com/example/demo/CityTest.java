@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -15,13 +14,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class FacultyTest
-{
+public class CityTest {
     @Autowired
     private MockMvc mock;
     @Test
     public void func() throws Exception{
-        mock.perform(MockMvcRequestBuilders.get("/faculty").accept(MediaType.APPLICATION_JSON)).
-                andExpect(status().isOk()).andExpect(content().string(equalTo("Факультеты")));
+        mock.perform(MockMvcRequestBuilders.get("/city").accept(MediaType.APPLICATION_JSON)).
+                andExpect(status().isOk()).andExpect(content().string(equalTo("Города")));
     }
 }
