@@ -1,12 +1,12 @@
-package com.example.demo;
+package com.example.demo.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class CityController {
-    @GetMapping("/city")
+public class ParkController {
+    @GetMapping("/park")
     public String output(){
-        return "Города";
+        return "Парки";
     }
 }
