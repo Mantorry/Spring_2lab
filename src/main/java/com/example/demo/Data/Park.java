@@ -23,8 +23,6 @@ public class Park {
     private long city_id;
     @Size(min = 3, message = "Название парка не может быть меньше 3 символов!")
     private String name;
-    @Min(value = 1, message = "Площадь парка не может быть меньше 1 гектара!")
-    private float square;
     @NotNull
     private boolean water_place;
     @NotNull(message = "Дата не может быть пустой!")
@@ -32,10 +30,9 @@ public class Park {
     @NotNull
     private City city;
 
-    public Park(long city_id, String name, float square, boolean water_place, LocalDate build_date, City city) {
+    public Park(long city_id, String name, boolean water_place, LocalDate build_date, City city) {
         this.city_id = city_id;
         this.name = name;
-        this.square = square;
         this.water_place = water_place;
         this.build_date = build_date;
         this.city = city;
