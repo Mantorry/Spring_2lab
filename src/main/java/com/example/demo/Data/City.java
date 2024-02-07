@@ -6,9 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PUBLIC, force = true)

@@ -1,5 +1,6 @@
 package com.example.demo.Data;
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,16 +24,19 @@ public class Park {
     private long city_id;
     @Size(min = 3, message = "Название парка не может быть меньше 3 символов!")
     private String name;
+    @Size(min = 3, message = "Название парка не может быть меньше 3 символов!")
+    private String type;
     @NotNull
     private boolean water_place;
-    @NotNull(message = "Дата не может быть пустой!")
-    private LocalDate build_date;
+    @NotEmpty(message = "Дата не может быть пустой!")
+    private String build_date;
     @NotNull
     private City city;
 
-    public Park(long city_id, String name, boolean water_place, LocalDate build_date, City city) {
+    public Park(long city_id, String name, String type, boolean water_place, String build_date, City city) {
         this.city_id = city_id;
         this.name = name;
+        this.type = type;
         this.water_place = water_place;
         this.build_date = build_date;
         this.city = city;

@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/Cities
+    username: postgres
+
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+
