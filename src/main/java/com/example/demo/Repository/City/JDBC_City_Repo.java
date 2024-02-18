@@ -28,7 +28,8 @@ public class JDBC_City_Repo implements CityRepository{
     }
 
     private City mapRowToCity(ResultSet row, int rowNum) throws SQLException{
-        return new City(row.getLong("id"), row.getString("name"), row.getString("status"), row.getInt("population"));
+        return new City(row.getLong("id"), row.getString("name"),
+                row.getString("status"), row.getInt("population"));
     }
 
     @Override

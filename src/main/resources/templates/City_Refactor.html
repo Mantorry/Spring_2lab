@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html style=" height: 100%;">
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Города</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container-fluid"  style="background: #2f3130">
+    <nav class="navbar navbar-light snav">
+        <div class="container-fluid snav">
+            <a class="navbar-brand" href="/">
+                <img th:src="@{/img/nature.png}" alt="" width="80" height="80"/>
+            </a>
+            <h2 class="whitetext">Городские парки</h2>
+        </div>
+    </nav>
+    <div class="container-fluid" style="background: #b4b4b4">
+        <div class="row justify-content-start " style="background: #b4b4b4">
+            <div class="col-8 border bg-dark px-4" style="background: #b4b4b4">
+                <h3>Города</h3>
+                <table class="table" style="background: #b4b4b4">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Название</th>
+                        <th scope="col">Статус</th>
+                        <th scope="col">Население</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="var : ${list}">
+                        <td th:text="${var.getId()}"></td>
+                        <td th:text="${var.getName()}"></td>
+                        <td th:text="${var.getStatus()}"></td>
+                        <td th:text="${var.getPopulation()}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-4 border px-4">
+                <form method="POST" th:action="@{/city/refactor_second}" th:object="${city}">
+                    <h3 style="color: black">Редактирование города</h3>
+                    <div class="mb-3">
+                        <div class="col-sm-6">
+
+                            <label for="id" class="col-sm-3 col-form-label">ID</label>
+                            <input type="text" readonly name="id" class="form-control" id="id" th:field="*{id}"/>
+
+                            <label for="name" class="col-sm-3 col-form-label" style="color: black">Название города</label>
+                            <input type="text" name="inputname" class="form-control" id="name" th:field="*{name}"/>
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+
+                            <label for="status" class="col-sm-3 col-form-label" style="color: black">Статус города</label>
+                            <input type="text" name="inputstatus" class="form-control" id="status" th:field="*{status}"/>
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></div>
+
+                            <label for="population" class="col-sm-3 col-form-label" style="color: black">Население</label>
+                            <input type="number" name="inputpopulation" class="form-control" id="population" th:field="*{population}"/>
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('population')}" th:errors="*{population}"></div>
+                        </div>
+                    </div>
+                    <p>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Редактировать</button>
+                        <a href="/city"><button type="button" class="btn btn-primary">Отмена</button></a>
+                        <br>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

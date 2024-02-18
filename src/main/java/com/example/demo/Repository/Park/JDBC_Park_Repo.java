@@ -54,7 +54,7 @@ public class JDBC_Park_Repo implements ParkRepository{
 
     @Override
     public Park updatePark(Park student){
-        jdbcTemplate.update("update parklands set city_id=?,name?,type=?,water_place=?,build_date=? where id=?",
+        jdbcTemplate.update("update parklands set city_id=?,name=?,type=?,water_place=?,build_date=? where id=?",
                 student.getCity().getId(),
                 student.getName(),
                 student.getType(),
