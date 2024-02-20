@@ -22,7 +22,7 @@ public class JDBC_City_Repo implements CityRepository{
     }
 
     @Override
-    public Optional<City> findById(int id){
+    public Optional<City> findById(long id){
         List<City> result = jdbcTemplate.query("select * from cities where id = ?", this::mapRowToCity, id);
         return result.isEmpty() ? Optional.empty() : Optional.of(result.get(0));
     }

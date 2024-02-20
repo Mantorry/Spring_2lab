@@ -45,7 +45,7 @@ public class CityController {
 
     @PostMapping(value = "/refactor_first")
     public String update_start(@ModelAttribute(value = "var") City city, Model model) {
-        model.addAttribute("city",city);
+        model.addAttribute("city", city);
         Iterable<City> cities = cityRepository.findAll();
         model.addAttribute("list", cities);
         return "City_Refactor";

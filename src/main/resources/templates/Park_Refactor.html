@@ -33,8 +33,6 @@
                         <th scope="col">Тип</th>
                         <th scope="col">Водоем</th>
                         <th scope="col">Дата строительства</th>
-                        <th scope="col">Редактировать</th>
-                        <th scope="col">Удалить</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -46,37 +44,24 @@
                         <td th:if="${var.isWater_place()}" th:text="Есть"></td>
                         <td th:if="${!var.isWater_place()}" th:text="Нет"></td>
                         <td th:text="${var.getBuild_date()}"></td>
-                        <td>
-                            <form action="#" th:action="@{/park/refactor_first}" th:object="${var}" method="post">
-                                <input name="id" type="hidden" th:value="${var.getId()}"/>
-                                <input name="name" type="hidden" th:value="${var.getName()}"/>
-                                <input name="type" type="hidden" th:value="${var.getType()}"/>
-                                <input name="water_place" type="hidden" th:value="${var.isWater_place()}"/>
-                                <input name="build_date" type="hidden" th:value="${var.getBuild_date()}"/>
-                                <input name="city_id" type="hidden" th:value="${var.getCity_id()}"/>
-                                <button type="submit" class="btn btn-outline-primary"><img th:src="@{/img/refactor.png}" alt=""/></button>
-                            </form>
-                        </td>
-                        <td>
-                            <form action="#" th:action="@{/park/remove}" th:object="${var}" method="post">
-                                <input name="id" type="hidden" th:value="${var.getId()}"/>
-                                <button type="submit" class="btn btn-outline-primary"><img
-                                        th:src="@{/img/remove.png}" alt=""/></button>
-                            </form>
-                        </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
             <div class="col-4 border px-4">
-                <form method="POST" th:action="@{/park/save}" th:object="${park}">
+                <form method="POST" th:action="@{/park/refactor_second}" th:object="${park}">
                     <div class="mb-3">
-                        <br> <label class="col-sm-3 col-form-label">Добавление парка</label>
+                        <br> <label class="col-sm-3 col-form-label">Редактирование</label>
                         <div class="col-sm-6">
+
+                            <label for="id" class="col-sm-3 col-form-label">ID</label>
+                            <input type="text" readonly name="inputid" class="form-control" id="id" th:field="*{id}"/>
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('id')}"
+                                 th:errors="*{id}"></div>
 
                             <label for="city" class="col-sm-3 col-form-label"></label>
                             <div class="col-sm-7">
-                                <select style="width: 200%" th:field="*{city_id}" name="city" id="city"
+                                <select style="width: 172%" th:field="*{city_id}" name="city" id="city"
                                         class="form-control">
                                     <option th:value="-1">Выберите город</option>
                                     <option th:each="var : ${cities}" th:value="${var.getId()}"
@@ -98,7 +83,7 @@
                             <div class="alert alert-warning" th:if="${#fields.hasErrors('type')}"
                                  th:errors="*{type}"></div>
 
-                            <label for="waterplace" class="col-sm-3 col-form-label">Водоем</label>
+                            <label for="waterplace" class="col-sm-3 col-form-label">Водоем     </label>
                             <input type="checkbox" name="inputwaterplace" id="waterplace" th:field="*{water_place}"/>
                             <div class="alert alert-warning" th:if="${#fields.hasErrors('water_place')}"
                                  th:errors="*{water_place}"></div>
@@ -111,7 +96,8 @@
                     </div>
                     <p>
                         <br>
-                        <button type="submit" class="btn btn-primary">Сохранить</button>
+                        <button type="submit" class="btn btn-primary">Редактировать</button>
+                        <a href="/park"><button type="button" class="btn btn-primary">Отмена</button></a>
                         <br>
                     </p>
                 </form>

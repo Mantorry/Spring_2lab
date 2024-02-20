@@ -24,7 +24,7 @@ public class Park {
     private long city_id;
     @Size(min = 3, message = "Название парка не может быть меньше 3 символов!")
     private String name;
-    @Size(min = 3, message = "Название парка не может быть меньше 3 символов!")
+    @Size(min = 3, message = "Тип парка не может быть меньше 3 символов!")
     private String type;
     @NotNull
     private boolean water_place;

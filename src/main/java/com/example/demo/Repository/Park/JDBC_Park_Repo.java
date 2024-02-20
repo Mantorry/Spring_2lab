@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,7 +24,7 @@ public class JDBC_Park_Repo implements ParkRepository{
     @Override
     public Iterable<Park> findAll() {return jdbcTemplate.query("select * from parklands", this::mapRowToPark);}
     @Override
-    public Optional<Park> findById(int id) {
+    public Optional<Park> findById(long id) {
         List<Park> results = jdbcTemplate.query("select * from parklands where id=?", this::mapRowToPark, id);
         return results.isEmpty() ? Optional.empty() : Optional.of(results.get(0));
     }
@@ -37,13 +38,13 @@ public class JDBC_Park_Repo implements ParkRepository{
     @Override
     public Park savePark(Park student) {
         jdbcTemplate.update(
-                "insert into parlands (city_id, name, type, water_place, build_date) " +
+                "insert into parklands (city_id, name, type, water_place, build_date) " +
                         "values (?, ?, ?, ?, ?)",
                 student.getCity().getId(),
                 student.getName(),
                 student.getType(),
                 student.isWater_place(),
-                student.getBuild_date());
+                LocalDate.parse(student.getBuild_date()));
         return student;
     }
 
@@ -59,7 +60,7 @@ public class JDBC_Park_Repo implements ParkRepository{
                 student.getName(),
                 student.getType(),
                 student.isWater_place(),
-                student.getBuild_date(),
+                LocalDate.parse(student.getBuild_date()),
                 student.getId());
         return student;
     }
