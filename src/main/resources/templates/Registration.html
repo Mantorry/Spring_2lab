@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="bodys">
+<nav class="navbar navbar-light snav">
+    <div class="container-fluid snav">
+        <a class="navbar-brand" href="/">
+            <img th:src="@{/img/nature.png}" alt="" width="80" height="80"/>
+        </a>
+        <h2 class="whitetext">Городские парки</h2>
+    </div>
+</nav>
+<form method="POST" th:action="@{/registration}" id="registerForm">
+    <div class="mb-3" th:align="CENTER">
+        <br>
+        <div class="col-sm-6" style="background: #5576b9; border: 45px solid #5576b9; border-radius: 30px;">
+            <h3>Регистрация</h3>
+            <br>
+            <label for="username" class="col-sm-5 col-form-label whitetext">Имя пользователя: </label>
+            <input type="text" name="username" class="form-control" id="username"/><br/>
+
+            <label for="password" class="col-sm-5 col-form-label whitetext">Пароль:</label>
+            <input type="password" class="form-control" name="password" id="password"/><br/>
+
+            <label for="email" class="col-sm-5 col-form-label whitetext">Электронная почта: </label>
+            <input type="text" class="form-control" name="email" id="email"/><br/>
+
+            <p><button type="submit" class="btn btn-primary btnlog">Регистрация</button><br><br></p>
+            <a th:href="@{/login}" class="whitetext createac">Уже есть аккаунт? Войдите</a>
+        </div>
+    </div>
+
+</form>
+</body>
+</html>

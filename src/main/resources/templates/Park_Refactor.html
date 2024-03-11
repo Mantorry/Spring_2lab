@@ -18,6 +18,9 @@
                 <img th:src="@{/img/nature.png}" alt="" width="80" height="80"/>
             </a>
             <h2 class="whitetext">Городские парки</h2>
+            <form th:action="@{/logout}" method="post">
+                <button class="btn btn-primary btnlog" th:text="${authname}" type="submit"></button>
+            </form>
         </div>
     </nav>
     <div class="container-fluid" style="background: #b4b4b4">

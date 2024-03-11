@@ -4,6 +4,17 @@
 .item{background: #5576b9;}
 .hrefitem:hover{color: white;}
 .hrefitem{color: white;}
+.btnlog{
+    background: #648bdc;
+    border: transparent 3px solid;
+    border-radius: 10px;
+    font-size: 17px
+}
+.btnlog:hover{
+    background: #5576b9;
+    border: #648bdc 3px inset;
+    font-size: 17px
+}
 .bodys {
     margin: 0;
     background: #2f3130;
@@ -13,3 +24,10 @@
     grid-template-rows: auto 1fr auto;
 }
 .html{background: #2f3130;}
+
+.createac{
+    color: white;
+}
+.createac:hover{
+    color: #1d3246;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+</head>
+<body class="bodys">
+<nav class="navbar navbar-light snav">
+    <div class="container-fluid snav">
+        <a class="navbar-brand" href="/">
+            <img th:src="@{/img/nature.png}" alt="" width="80" height="80"/>
+        </a>
+        <h2 class="whitetext row-cols-sm-3">Городские парки</h2>
+    </div>
+</nav>
+<form method="POST" th:action="@{/login}" id="loginFrom">
+    <div class="mb-3" th:align="CENTER">
+        <br>
+        <div class="col-sm-6" style="background: #5576b9; border: 45px solid #5576b9; border-radius: 30px;">
+            <h3>Авторизация</h3>
+            <br>
+            <label for="username" class="col-sm-5 col-form-label whitetext">Имя пользователя: </label>
+            <input type="text"  class="form-control" name="username" id="username" /><br/>
+            <label for="password" class="col-sm-5 col-form-label whitetext">Пароль: </label>
+            <input type="password"   class="form-control" name="password" id="password" /><br/>
+            <p>
+
+                <button type="submit" class="btn btn-primary btnlog">Войти</button>
+                <br>
+                <br>
+            </p>
+            <div th:if="${error}" th:text="${error}">Проверьте свое имя пользователя и пароль!</div>
+            <a th:href="@{/registration}" class="whitetext createac">Нет аккаунта?</a>
+        </div>
+    </div>
+</form>
+</body>
+</html>

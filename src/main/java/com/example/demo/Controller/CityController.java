@@ -3,6 +3,8 @@ package com.example.demo.Controller;
 import com.example.demo.Data.City;
 import com.example.demo.Repository.City.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@RequestMapping("city")
+@RequestMapping("/city")
 @SessionAttributes("list")
 @Controller
 public class CityController {
@@ -20,7 +22,8 @@ public class CityController {
     public CityController(CityRepository cityRepository) {this.cityRepository = cityRepository;}
 
     @GetMapping
-    public String show(Model model) {
+    public String show(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+        model.addAttribute("authname", userDetails.getUsername()+":Выход");
         City city = new City();
         model.addAttribute("city",city);
         Iterable<City> cities = cityRepository.findAll();
@@ -44,7 +47,8 @@ public class CityController {
     }
 
     @PostMapping(value = "/refactor_first")
-    public String update_start(@ModelAttribute(value = "var") City city, Model model) {
+    public String update_start(@AuthenticationPrincipal UserDetails userDetails, @ModelAttribute(value = "var") City city, Model model) {
+        model.addAttribute("authname", userDetails.getUsername()+":Выход");
         model.addAttribute("city", city);
         Iterable<City> cities = cityRepository.findAll();
         model.addAttribute("list", cities);

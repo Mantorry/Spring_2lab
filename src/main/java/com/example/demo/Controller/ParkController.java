@@ -5,6 +5,8 @@ import com.example.demo.Data.Park;
 import com.example.demo.Repository.City.CityRepository;
 import com.example.demo.Repository.Park.ParkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +32,8 @@ public class ParkController {
         this.cityRepository = cityRepository;
     }
     @GetMapping
-    public String read(Model model){
+    public String read(@AuthenticationPrincipal UserDetails userDetails, Model model){
+        model.addAttribute("authname", userDetails.getUsername()+":Выход");
         Park park = new Park();
         model.addAttribute("park", park);
         Iterable<Park> parks = parkRepository.findAll();
@@ -55,10 +58,9 @@ public class ParkController {
         return "redirect:/park";
     }
     @PostMapping(value = "/refactor_first")
-    public String refactor_first(@ModelAttribute(value = "var") Park park, Model model) {
-        System.out.println(park);
+    public String refactor_first(@AuthenticationPrincipal UserDetails userDetails, @ModelAttribute(value = "var") Park park, Model model) {
+        model.addAttribute("authname", userDetails.getUsername()+":Выход");
         park.setCity(cityRepository.findById(park.getCity_id()).get());
-        System.out.println(park);
         model.addAttribute("park", park);
         Iterable<Park> parks = parkRepository.findAll();
         model.addAttribute("list", parks);
