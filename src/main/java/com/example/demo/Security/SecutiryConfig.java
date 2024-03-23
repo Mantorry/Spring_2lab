@@ -30,8 +30,9 @@ public class SecutiryConfig {
     public SecurityFilterChain filterChain(HttpSecurity http)
         throws Exception {
         return http.authorizeHttpRequests(auth-> auth
-                .requestMatchers("city/**", "park/**").authenticated()
-                .requestMatchers("/**").permitAll())
+                .requestMatchers("/city/**", "/park/**", "/actuator/**").authenticated()
+                .requestMatchers("/login/**", "/registration/**").anonymous()
+                .requestMatchers("/", "/css/**", "/img/**").permitAll())
                 .formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer.loginPage("/login"))
                 .build();
     }
